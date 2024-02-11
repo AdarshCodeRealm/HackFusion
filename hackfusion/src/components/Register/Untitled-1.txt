@@ -1,0 +1,67 @@
+import React, { useState } from "react";
+
+function Register() {
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [previewSource, setPreviewSource] = useState();
+
+  const register = async () => {};
+  const login = async () => {};
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreviewSource(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setPreviewSource(null);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+      <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div className="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
+          <div className="max-w-md mx-auto">
+            <div className="text-center">
+              <h2 className="text-3xl font-extrabold text-gray-900">Create an account</h2>
+              <p className="mt-1 text-sm text-gray-500">Or start your  14-day free trial.</p>
+            </div>
+            <div className="mt-8 space-y-6">
+              <div className="rounded-md shadow-sm -space-y-px">
+                <div>
+                  <label htmlFor="profilePicture" className="sr-only">Profile Picture</label>
+                  <input
+                    id="profilePicture"
+                    name="profilePicture"
+                    type="file"
+                    accept="image/*"
+                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    placeholder="Profile Picture"
+                    onChange={handleImageUpload}
+                  />
+                </div>
+                {/* ... other form fields ... */}
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Create Account
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Register;

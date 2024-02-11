@@ -1,0 +1,77 @@
+
+import React, { useState } from 'react';
+
+function Profile() {
+  const [number, setNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [profilePicture, setProfilePicture] = useState(null);
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setProfilePicture(URL.createObjectURL(file));
+    } else {
+      setProfilePicture(null);
+    }
+  };
+
+  return (
+    <div className="container mx-auto px-4 py-5">
+      <h1 className="text-3xl font-bold mb-4">Profile Page</h1>
+      <div className="mb-4">
+        <label htmlFor="profilePicture" className="block text-gray-700 text-sm font-bold mb-2">Profile Picture:</label>
+        <input
+          type="file"
+          id="profilePicture"
+          onChange={handleImageUpload}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        {profilePicture && <img src={profilePicture} alt="Profile" className="mt-4 h-32 w-32 object-cover rounded-full shadow-lg" />}
+      </div>
+      <div className="mb-4">
+        <label htmlFor="number" className="block text-gray-700 text-sm font-bold mb-2">Phone Number:</label>
+        <input
+          type="tel"
+          id="number"
+          value={number}
+          onChange={(e) => setNumber(e.target.value)}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="firstName" className="block text-gray-700 text-sm font-bold mb-2">First Name:</label>
+        <input
+          type="text"
+          id="firstName"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="lastName" className="block text-gray-700 text-sm font-bold mb-2">Last Name:</label>
+        <input
+          type="text"
+          id="lastName"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+    </div>
+  );
+}
+
+export default Profile;

@@ -1,0 +1,12 @@
+.active {
+    background-color: rgba(255,  255,  255,  0.1); /* Semi-transparent white background */
+    backdrop-filter: blur(10px); /* Glassy effect */
+    border-radius:  12px; /* Rounded corners */
+    transition: background-color  0.3s ease, backdrop-filter  0.3s ease; /* Smooth transition */
+  }
+
+  .nav-icon {
+    width:  24px; /* Adjust the width as needed */
+    height:  24px; /* Adjust the height as needed */
+    fill: currentColor; /* To inherit the color from the parent */
+  }
